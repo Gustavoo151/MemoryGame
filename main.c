@@ -9,8 +9,8 @@
 #include "funcoes/defeatScreen.h" // Essa biblioteca contém o desing e a mecanica da janela derrota
 #include "funcoes/clickMouse.h" // Essa função pegar o click do mouse
 #include "funcoes/nameWindow.h" // Essa função colocar um nome na janela
-#include "funcoes/gamePlayScreen.h" // Bibioteca que contém o desing da tela de gamePlay
-#include "funcoes/urlOpen.h" // Bibioteca que abre um URL
+#include "funcoes/gamePlayScreen.h" // Biblioteca que contém o desing da tela de gamePlay
+#include "funcoes/urlOpen.h" // Biblioteca que abre um URL
 
 
 
@@ -26,60 +26,76 @@ int main(){
     
    SetTargetFPS(60);  // Define a quantidade de FPS do jogo
    
-   Music musica = musicPlay(); // Passando o arquivo Music para variável musica
- 
-   int opcTela = 1  ;  // Variavel para Trocar de tela
-   
-   //icon();
+   InitAudioDevice(); 
 
+   char nameMusicHome[40] = "media/Music/MusicHome.mp3";
+   char nameMusicGamePlay[40] = "media/Music/MusicGamePlay.mp3";
+   char nameMusicDefeat[40] = "media/Music/MusicDefeat.mp3";
+   
+   // Arquivo tipoMusic para tocarMusica
+    Music musicHome = LoadMusicStream(nameMusicHome);
+    Music musicGameP = LoadMusicStream(nameMusicGamePlay);
+    Music musicDefeat = LoadMusicStream(nameMusicDefeat);  
+
+   int opcTela = 1;  // Variavel para Trocar de tela
+  // int StateSound = 1;
    
    while(!WindowShouldClose())  // Deixa tela aberta até os esc ser pressionado
-       {
-           // Lugar onde posso colocar as funçoes
-        
-        
-        //---------------------------------------------
-
-        
+   {
+       
         BeginDrawing();  // Tela de configuração (framebuffer) para começar a desenhar
         
-        if (opcTela == 1)
-        {   
-            menuDesing();
-            opcTela = clickMouseMainScreen(); // Função que mostra
-            tocarMusica(musica); // função reproduz a música
-        } 
-        
-        else if (opcTela == 2)
+        switch (opcTela)
         {
-            gamePlayDesing();
-            tocarMusica(musica); // função reproduz a música
+            case 1:
+            {
+                menuDesing();
+                opcTela = clickMouseMainScreen(); // Função que mostra
+                tocarMusica(musicHome); // função reproduz a música
+               // if (!StateSound)
+              //      StopMusicStream(musicHome); 
+                break;
+                
+            }
+            case 2:
+            {
+                gamePlayDesing();
+                tocarMusica(musicGameP); // função reproduz a música
+                break;
+            }
+            case 3:
+            {
+                recordsDesing();  // Desinig dos recordes
+                tocarMusica(musicHome); // função reproduz a música
+                break;
+            }
+            case 4:
+            {
+                victoryDesing();
+               // tocarMusica(musica); // função reproduz a música
+                break;
+            }
+            case 5:
+            {
+                defeatDesing();  
+                tocarMusica(musicDefeat); // função reproduz a música
+                break;
+            }	
+            case 6:
+            {
+                 return NULL; // Saindo do jogo
+            }
+
         }
-               
-        else if (opcTela == 3)
-        {
-            recordsDesing();  // Desinig dos recordes
-            tocarMusica(musica); // função reproduz a música
-            
-        }
-        
-        else if(opcTela == 5)
-        {
-            victoryDesing();
-            tocarMusica(musica); // função reproduz a música
-        }
-        
-        else if(opcTela == 4)
-        {
-            defeatDesing();  
-            tocarMusica(musica); // função reproduz a música
-        }
-        
         
         EndDrawing(); // Finalize o desenho da tela e troque os buffers (buffer duplo)
     }
-   // funcao fechar musuc
-    UnloadMusicStream(musica);
+    
+  
+    UnloadMusicStream(musicHome);  // descarregar fluxo de música
+    UnloadMusicStream(musicGameP);
+    UnloadMusicStream(musicDefeat);
+    
     CloseAudioDevice();
    
     CloseWindow(); // Fechar janela e contexto OpenGL

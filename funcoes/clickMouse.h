@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "raylib.h"
 
+
 //int clickMouse(int x, int y, int width, int height)
 int clickMouseMainScreen(){
     
@@ -10,6 +11,7 @@ int clickMouseMainScreen(){
     Rectangle botaoRetanguloRescords = {357, 330, 195, 30}; // Criando um retangulo para o start
     Rectangle botaoRetanguloExit = {355, 380, 115, 30}; // Criando um retangulo para o exit
     Rectangle linkGitgub = {680,600, 180, 20}; // Ratangulo de acesso URL gitHub
+    Rectangle muteBotton = {360, 580, 80, 30}; // Area de clique botão Mute
     
     
     Vector2 mousePosition = {0.0f, 0.0f};  // Criando vetor para pegar a posição do mouse
@@ -38,17 +40,25 @@ int clickMouseMainScreen(){
     {
         DrawText("EXIT", 360, 380, 40, BLACK);
         
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-            return 1;
-           // CloseWindow();
-        }       
+        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+            return 6;     
     }
+    
     if(CheckCollisionPointRec(mousePosition, linkGitgub))
     {     
         DrawText("Github repository", 680, 600, 20, WHITE);
         
         if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
             urlOpen(); // Abrindo link do gitHub
+    }
+
+    if(CheckCollisionPointRec(mousePosition, muteBotton))
+    {    
+        DrawText("MUTE", 360, 580, 30, BLACK);
+        
+        //if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+         //   StateSound = 0;
+        
     }
 
     return 1; 
