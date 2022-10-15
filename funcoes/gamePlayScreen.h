@@ -10,7 +10,6 @@ void gamePlayDesing(){
     
     DrawRectangleGradientV (00, 00, 900, 540, BLACK, MARROMDARK);  // fazendo um efeito grandiente no plano de fundo
     
-    
     DrawText("GAME PLAY", 300, 180, 80, WHITE);
 }
 

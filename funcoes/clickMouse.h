@@ -1,24 +1,19 @@
 #include <stdio.h>
 #include "raylib.h"
 
+// rectangle click area (int x, int y, int width, int height)
+Rectangle botaoRetanguloStart = {350, 275, 160, 50};
+Rectangle botaoRetanguloRescords = {357, 330, 195, 30};
+Rectangle botaoRetanguloExit = {355, 380, 115, 30};
+Rectangle linkGitgub = {680,600, 180, 20}; 
+Rectangle backRecords = {360,410, 100, 40};
 
-//int clickMouse(int x, int y, int width, int height)
+
+Vector2 mousePosition = {0.0f, 0.0f};  // Criando vetor para pegar a posição do mouse
+
 int clickMouseMainScreen(){
     
-    // 350, 350, 100, 100 Tamanho da botão
-    // 350,275, 165, 50 botão retangulo
-    Rectangle botaoRetanguloStart = {350, 275, 160, 50}; // Criando um retangulo para o start
-    Rectangle botaoRetanguloRescords = {357, 330, 195, 30}; // Criando um retangulo para o start
-    Rectangle botaoRetanguloExit = {355, 380, 115, 30}; // Criando um retangulo para o exit
-    Rectangle linkGitgub = {680,600, 180, 20}; // Ratangulo de acesso URL gitHub
-    Rectangle muteBotton = {360, 580, 80, 30}; // Area de clique botão Mute
-    
-    
-    Vector2 mousePosition = {0.0f, 0.0f};  // Criando vetor para pegar a posição do mouse
-    
-    mousePosition = GetMousePosition(); // Passando a posição do mouse para vetor
-    
-    
+    mousePosition = GetMousePosition(); // Passando a posição do mouse para vetor   
     
     if(CheckCollisionPointRec(mousePosition, botaoRetanguloStart)) // Checando se mouse está em cima do botão
     { 
@@ -51,22 +46,29 @@ int clickMouseMainScreen(){
         if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
             urlOpen(); // Abrindo link do gitHub
     }
-
-    if(CheckCollisionPointRec(mousePosition, muteBotton))
-    {    
-        DrawText("MUTE", 360, 580, 30, BLACK);
-        
-        //if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-         //   StateSound = 0;
-        
-    }
-
+    
     return 1; 
+}
+
+int clickMouseRecordsScreen(){
+    
+    mousePosition = GetMousePosition(); // Passando a posição do mouse para vetor 
+    
+    if(CheckCollisionPointRec(mousePosition, backRecords))
+    {
+        DrawText("BACK", 360,410, 40, BLACK);
+        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+            return 1;
+    }
+    
+    return 3;
+    
 }
 
 #ifndef HEARDESVICTORY_H_INCLUDED
 #define HEARDESVICTORY_H_INCLUDED
 
 int clickMouseMainScreen();
+int clickMouseRecordsScreen();
 
 #endif // HEARDESFUNCS_H_INCLUDED

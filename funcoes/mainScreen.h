@@ -16,7 +16,6 @@ void menuDesing(){  // Desing da home
     DrawText("EXIT", 360, 380, 40, WHITE);
     DrawText("©Gustavo Oliveira", 20, 600, 20, BLACK);
     DrawText("Github repository", 680, 600, 20, BLACK);
-    DrawText("MUTE", 360, 580, 30, WHITE);
 }
 
 

@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include "raylib.h"
 
-/*
-    Biblioteca de reprodução de Musicas/Sons
-*/
+// Biblioteca de reprodução de Musicas/Sons
+
 
 void tocarMusica(Music music){
     UpdateMusicStream(music);
