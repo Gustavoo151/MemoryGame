@@ -39,6 +39,7 @@ int main(){
     Texture2D homeBackGround = LoadTexture("media/imagens/FundoMain.png"); // BackGroundHome
     Texture2D backGroundRecords = LoadTexture("media/imagens/BackGroundRecords.png"); // BackGroundRecords
     Texture2D backGroundGame = LoadTexture("media/imagens/BackGroundGamePlay.png"); // BackGroundGamePlay
+    Texture2D backGroundVictor = LoadTexture("media/imagens/BackGroundVictory.png"); // BackGroundVirctory
     
    int opcTela = 1;  // Variavel para Trocar de tela
    
@@ -74,6 +75,7 @@ int main(){
             }
             case 4:
             {
+                DrawTextureEx(backGroundVictor, (Vector2){0, 0}, 0, 0.49f, WHITE); // Desenhando a textura da imagem
                 victoryDesing();
                // tocarMusica(musica); // função reproduz a música
                 break;
