@@ -177,7 +177,7 @@
 #define MAGENTA    CLITERAL(Color){ 255, 0, 255, 255 }     // Magenta
 #define RAYWHITE   CLITERAL(Color){ 245, 245, 245, 255 }   // My own White (raylib logo)
 
-#define AZULFUNDO     CLITERAL(Color){49, 49, 130, 1}
+#define AZULFUNDO  CLITERAL(Color){ 49, 49, 130, 1 }
 #define MARROMDARK CLITERAL(Color){119, 70, 52, 1}
 //----------------------------------------------------------------------------------
 // Structures Definition

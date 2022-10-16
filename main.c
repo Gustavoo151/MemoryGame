@@ -12,18 +12,19 @@
 #include "funcoes/gamePlayScreen.h" // Biblioteca que contém o desing da tela de gamePlay
 #include "funcoes/urlOpen.h" // Biblioteca que abre um URL
 
+
 //#include "funcoes/incoWindow.h" // Essa função colocar um icone na janela
 //#include "funcoes/showGif.h" // Essa biblioteca contém o desing e a mecanica da janela derrota
 
 
 int main(){
    const int screenWidth = 900;  // Largura de tela 
-   const int screenHeight = 650; // Altura da tela
+   const int screenHeight = 620; // Altura da tela
    
    InitWindow(screenWidth, screenHeight, "Jogo da menoria");  // Inicializa a tela
     
    SetTargetFPS(60);  // Define a quantidade de FPS do jogo
-   
+  
    InitAudioDevice(); 
 
    char nameMusicHome[40] = "media/Music/MusicHome.mp3";
@@ -35,6 +36,10 @@ int main(){
     Music musicGameP = LoadMusicStream(nameMusicGamePlay);
     Music musicDefeat = LoadMusicStream(nameMusicDefeat);  
 
+    Texture2D homeBackGround = LoadTexture("media/imagens/FundoMain.png"); // BackGroundHome
+    Texture2D backGroundRecords = LoadTexture("media/imagens/BackGroundRecords.png"); // BackGroundRecords
+    Texture2D backGroundGame = LoadTexture("media/imagens/BackGroundGamePlay.png"); // BackGroundGamePlay
+    
    int opcTela = 1;  // Variavel para Trocar de tela
    
    while(!WindowShouldClose())  // Deixa tela aberta até os esc ser pressionado
@@ -46,6 +51,7 @@ int main(){
         {
             case 1:
             {
+                DrawTextureEx(homeBackGround, (Vector2){0, 0}, 0, 0.70f, WHITE); // Desenhando o fundo da tela main
                 menuDesing();
                 opcTela = clickMouseMainScreen(); // Função que mostra
                 tocarMusica(musicHome); // função reproduz a música
@@ -53,13 +59,15 @@ int main(){
             }
             case 2:
             {
+                DrawTextureEx(backGroundGame, (Vector2){0, 0}, 0, 0.345f, WHITE); // Desenhando a textura da imagem 
                 gamePlayDesing();
                 tocarMusica(musicGameP); // função reproduz a música
                 break;
             }
             case 3:
             {
-                recordsDesing();  // Desinig dos recordes
+                DrawTextureEx(backGroundRecords, (Vector2){0, 0}, 0, 1.0f, WHITE); // Desenhando a textura da imagem
+                recordsScreen();  // Desinig dos recordes
                 opcTela = clickMouseRecordsScreen(); // Passanto o valor da screen a ser aberta
                 tocarMusica(musicHome); // função reproduz a música
                 break;
@@ -90,6 +98,11 @@ int main(){
     UnloadMusicStream(musicHome);  // descarregar fluxo de música
     UnloadMusicStream(musicGameP);
     UnloadMusicStream(musicDefeat);
+    
+    UnloadTexture(homeBackGround);  // Unload background texture
+    UnloadTexture(backGroundRecords);  
+    UnloadTexture(backGroundGame);  
+    
     
     CloseAudioDevice();
    
