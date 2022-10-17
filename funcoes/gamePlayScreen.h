@@ -2,16 +2,13 @@
 #include "raylib.h"
 
 
-
 void gamePlayDesing(){
-    
-    ClearBackground(MARROMDARK);
-    
+        
     char nameWindowGamePlay[20] = "Memory Game";
     setNameWindow(nameWindowGamePlay); // Colocando um nome na janela gamePlay
     
-    DrawText("GAME PLAY", 300, 180, 40, WHITE);
-        
+    DrawText("GAME PLAY", 300, 100, 40, WHITE);
+    DrawText("EXIT", 780, 360, 35, WHITE);
 }
 
 
