@@ -3,8 +3,7 @@
 
 char link[100] = "https://github.com/Gustavoo151/MemoryGame";  // Link do repositório de GitHub
 
-void urlOpen(){
-    
+void urlOpen(){   
     OpenURL(link);                             
 }
 

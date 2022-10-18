@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include "raylib.h"
+#include <time.h>
+
+int pair[16] = {1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8};
 
 
-void shuffleVector(int *vet, int vetSize){
+void shuffleVector(int *vet, int vetSize){  // Embaralhando vetor
+    srand(time(NULL));
     for (int i = 1; i < vetSize; i++)
     {
         int r = rand() % vetSize;
@@ -12,6 +16,7 @@ void shuffleVector(int *vet, int vetSize){
         vet[r] = temp;
     }
 }
+
 
 #ifndef HEARDESGAMEPLAY_H_INCLUDED
 #define HEARDESGAMEPLAY_H_INCLUDED

@@ -11,6 +11,7 @@
 #include "funcoes/gamePlayScreen.h" // Biblioteca que contém o desing da tela de gamePlay
 #include "funcoes/urlOpen.h" // Biblioteca que abre um URL
 #include "funcoes/gamePlayMecanics.h"
+#include "funcoes/iconWindow.h" // Biblioteca que adicona o icone na janela
 
 //#include "funcoes/incoWindow.h" // Essa função colocar um icone na janela
 
@@ -35,17 +36,24 @@ int main(){
     Texture2D backGroundRecords = LoadTexture("media/imagens/BackGroundRecords.png"); // BackGroundRecords
     Texture2D backGroundGame = LoadTexture("media/imagens/BackGroundGamePlay.png"); // BackGroundGamePlay
     Texture2D backGroundVictor = LoadTexture("media/imagens/BackGroundVictory.png"); // BackGroundVirctory
+                
+                
+    Image imagemTeste = LoadImage("media/imagens/iconBrain.png");
     
-   int opcTela = 4;  // Variavel para Trocar de tela
+    int opcTela = 1;  // Variavel para Trocar de tela
    
    while(!WindowShouldClose())  // Deixa tela aberta até os esc ser pressionado
    {
         BeginDrawing();  // Tela de configuração (framebuffer) para começar a desenhar
         
+        icon(imagemTeste); // Colocando icone da janela
+        
         switch (opcTela)
         {
             case 1:
             {
+                
+                
                 DrawTextureEx(homeBackGround, (Vector2){0, 0}, 0, 0.70f, WHITE); // Desenhando o fundo da tela main
                 menuDesing();
                 opcTela = clickMouseMainScreen(); // Função que mostra

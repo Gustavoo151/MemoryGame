@@ -2,14 +2,13 @@
 #include "raylib.h"
 
 //Funçõa para colocar icone na janela
-void icon(){
-        Image iconImage = LoadImageAnim("media/imagens/brainstorm.png");
-        SetWindowIcon(iconImage);
+void icon(Image image){
+    SetWindowIcon(image);
 }
 
 #ifndef HEARDESVICTORY_H_INCLUDED
 #define HEARDESVICTORY_H_INCLUDED
 
-void icon();
+void icon(Image image);
 
 #endif // HEARDESFUNCS_H_INCLUDED
