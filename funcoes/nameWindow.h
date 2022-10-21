@@ -3,7 +3,7 @@
 
 
 /*Essa função colocar um nome na janela*/
-void setNameWindow(char name[30]){
+void setNameWindow(char name[20]){
     SetWindowTitle(name);
 }
 
@@ -11,6 +11,6 @@ void setNameWindow(char name[30]){
 #ifndef HEARDESSHOWGIF_H_INCLUDED
 #define HEARDESSHOWGIF_H_INCLUDED
 
-void setNameWindow(char name[30]);
+void setNameWindow(char name[20]);
 
 #endif // HEARDESFUNCS_H_INCLUDED

@@ -10,8 +10,7 @@ void menuDesing(){  // Desing da home
 
     DrawText("MEMORY GAME", 280, 180, 50, WHITE);
     DrawText("START", 360, 280, 40, WHITE);
-    DrawText("RECORDS", 360, 330, 40, WHITE);
-    DrawText("EXIT", 360, 380, 40, WHITE);
+    DrawText("EXIT", 360, 330, 40, WHITE);
     DrawText("©Gustavo Oliveira", 20, 570, 20, WHITE);
     DrawText("Github repository", 680, 570, 20, WHITE);
 }

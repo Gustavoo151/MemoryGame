@@ -3,8 +3,7 @@
 
 // rectangle click area (int x, int y, int width, int height)
 Rectangle botaoRetanguloStart = {350, 275, 160, 50};
-Rectangle botaoRetanguloRescords = {357, 330, 195, 30};
-Rectangle botaoRetanguloExit = {355, 380, 115, 30};
+Rectangle botaoRetanguloExit = {355, 330, 115, 30};
 Rectangle linkGitgub = {680,570, 180, 20}; 
 Rectangle backRecords = {360,410, 100, 40};
 
@@ -21,19 +20,11 @@ int clickMouseMainScreen(){
         
         if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))  // Se o botão for clicado retorna o numero da janela a ser aberta
             return 2;
-    } 
-    
-    if(CheckCollisionPointRec(mousePosition, botaoRetanguloRescords))
-    { 
-        DrawText("RECORDS", 360, 330, 40, MAGENTA); 
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-            return 3; // Retornando qual tela entrar
     }
     
     if(CheckCollisionPointRec(mousePosition, botaoRetanguloExit))
     {
-        DrawText("EXIT", 360, 380, 40, MAGENTA);
+        DrawText("EXIT", 360, 330, 40, MAGENTA);
         
         if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
             return 5;     
@@ -50,21 +41,6 @@ int clickMouseMainScreen(){
     return 1; 
 }
 
-
-int clickMouseRecordsScreen(){ // Função que pegar o click e redireciona para janela escolhida na RecordsScreen
-    
-    mousePosition = GetMousePosition(); // Passando a posição do mouse para vetor 
-    
-    if(CheckCollisionPointRec(mousePosition, backRecords))
-    {
-        DrawText("BACK", 360,410, 40, BLACK);
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-            return 1;
-    }
-    
-    return 3;
-    
-}
 
 // Retangulos para recpnhecer área de clique da screen gamePlay
 Rectangle button1 = {115, 180, 140, 85};
@@ -89,135 +65,87 @@ int clickGamePlay(){  // Função a posição do botão clicado
     
     mousePosition = GetMousePosition();  
     
-    if(CheckCollisionPointRec(mousePosition, button1)) // Checando se mouse está em cima do botão
-    { 
+    if(CheckCollisionPointRec(mousePosition, button1) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){  // Checando se mouse está em cima do botão
         DrawText("1", 155, 200, 40, BLACK);
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))  // Verficando se o botão foi clicado
-            return 2; // Retorna numero do botão clicado
+        return gamePlay(0);
+       // return 1; // Retorna numero do botão clicado
     } 
     
-    if(CheckCollisionPointRec(mousePosition, button2))
-    { 
+    else if(CheckCollisionPointRec(mousePosition, button2) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
         DrawText("2", 300, 200, 40, BLACK);
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
-            return 2;
+        return gamePlay(1);
     } 
     
-    if(CheckCollisionPointRec(mousePosition, button3))
-    { 
+    else if(CheckCollisionPointRec(mousePosition, button3) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
         DrawText("3", 450, 200, 40, BLACK);
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
-            return 3;
+        return gamePlay(2);
     } 
     
-    if(CheckCollisionPointRec(mousePosition, button4))
-    { 
+    else if(CheckCollisionPointRec(mousePosition, button4) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
         DrawText("4", 600, 200, 40, BLACK);
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-            return 4;
+        return gamePlay(3);
     } 
     
-    if(CheckCollisionPointRec(mousePosition, button5)) 
-    { 
+    if(CheckCollisionPointRec(mousePosition, button5) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
         DrawText("5", 155, 300, 40, BLACK); 
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
-            return 5;
+        return gamePlay(4);
     }         
     
-    if(CheckCollisionPointRec(mousePosition, button6)) 
-    { 
+    else if(CheckCollisionPointRec(mousePosition, button6) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
         DrawText("6", 300, 300, 40, BLACK); 
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
-            return 6;
+        return gamePlay(5);
     }     
     
-    if(CheckCollisionPointRec(mousePosition, button7))
-    { 
+    else if(CheckCollisionPointRec(mousePosition, button7) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
         DrawText("7", 450, 300, 40, BLACK);
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))  
-            return 7;
+        return gamePlay(6);
     } 
     
-    if(CheckCollisionPointRec(mousePosition, button8))
-    { 
+    else if(CheckCollisionPointRec(mousePosition, button8) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
         DrawText("8", 600, 300, 40, BLACK);
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))  
-            return 8;
+        return gamePlay(7);
     } 
     
-    if(CheckCollisionPointRec(mousePosition, button9))
-    { 
+    else if(CheckCollisionPointRec(mousePosition, button9) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
         DrawText("9", 155, 400, 40, BLACK);
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))  
-            return 9;
+        return gamePlay(8);
     }  
     
-    if(CheckCollisionPointRec(mousePosition, button10))
-    { 
+    else if(CheckCollisionPointRec(mousePosition, button10) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
         DrawText("10", 300, 400, 40, BLACK);
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))  
-            return 10;
+        return gamePlay(9);
     } 
     
-    if(CheckCollisionPointRec(mousePosition, button11))
-    { 
+    else if(CheckCollisionPointRec(mousePosition, button11) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
         DrawText("11", 450, 400, 40, BLACK);
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))  
-            return 11;
+        return gamePlay(10);
     } 
     
-    if(CheckCollisionPointRec(mousePosition, button12))
-    { 
+    else if(CheckCollisionPointRec(mousePosition, button12) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
         DrawText("12", 600, 400, 40, BLACK);
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-            return 12;
+        return gamePlay(11);
     } 
     
-    if(CheckCollisionPointRec(mousePosition, button13))
-    { 
+    else if(CheckCollisionPointRec(mousePosition, button13) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
         DrawText("13", 155, 500, 40, BLACK);
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-            return 13;
+        return gamePlay(12);
     } 
         
-    if(CheckCollisionPointRec(mousePosition, button14))
-    { 
+    else if(CheckCollisionPointRec(mousePosition, button14) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
         DrawText("14", 300, 500, 40, BLACK);
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
-            return 14;
+        return gamePlay(13);
     } 
     
-    if(CheckCollisionPointRec(mousePosition, button15))
-    { 
+    else if(CheckCollisionPointRec(mousePosition, button15) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
         DrawText("15", 450, 500, 40, BLACK);
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-            return 15;
+        return gamePlay(14);
     } 
     
-    if(CheckCollisionPointRec(mousePosition, button16))
-    { 
+    else if(CheckCollisionPointRec(mousePosition, button16) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
         DrawText("16", 600, 500, 40, BLACK);
-        
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))     
-            return 16;
-    }     
-    
-    return 0;
+        return gamePlay(15);
+    }
+    return 2;
 }
 
 Rectangle buttonExitGamePlay = {780, 360, 85, 35};
