@@ -7,8 +7,8 @@ void gamePlayDesing(){
     char nameWindowGamePlay[20] = "Memory Game";
     setNameWindow(nameWindowGamePlay); // Colocando um nome na janela gamePlay
     
-    DrawText("GAME PLAY", 300, 100, 40, WHITE);
-    DrawText("EXIT", 780, 360, 35, WHITE);
+    DrawText("MEMORY GAME", 275, 100, 40, WHITE);
+    DrawText("HOME", 780, 360, 35, WHITE);
 }
 
 

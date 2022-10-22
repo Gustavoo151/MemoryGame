@@ -25,14 +25,13 @@ int main(){
    
     Music musicHome = LoadMusicStream("media/Music/MusicHome.mp3"); // Arquivo tipoMusic para tocarMusica
     Music musicGameP = LoadMusicStream("media/Music/MusicGamePlay.mp3");
+    Music musicVictory = LoadMusicStream("media/Music/MusicVictory.mp3");
 
     Texture2D homeBackGround = LoadTexture("media/imagens/FundoMain.png"); // BackGroundHome
-    Texture2D backGroundRecords = LoadTexture("media/imagens/BackGroundRecords.png"); // BackGroundRecords
     Texture2D backGroundGame = LoadTexture("media/imagens/BackGroundGamePlay.png"); // BackGroundGamePlay
-    Texture2D backGroundVictor = LoadTexture("media/imagens/BackGroundVictory.png"); // BackGroundVirctory
+    Texture2D backGroundVictory = LoadTexture("media/imagens/BackGroundVictory.png"); // BackGroundVirctory
                 
-                
-    Image imagemTeste = LoadImage("media/imagens/iconBrain.png");
+    Image IconImage = LoadImage("media/imagens/iconBrain.png");
     
     int opcTela = 1;  // Variavel para Trocar de tela
     
@@ -40,7 +39,7 @@ int main(){
    {
         BeginDrawing();  // Tela de configuração (framebuffer) para começar a desenhar
         
-        icon(imagemTeste); // Colocando icone da janela
+        icon(IconImage); // Colocando icone da janela
         
         
         switch (opcTela)
@@ -62,19 +61,20 @@ int main(){
                 showCards();                
                 checkCards();
                 tocarMusica(musicGameP); // função reproduz a música
-                //opcTela = clickExitGamePlay();
+               // opcTela = clickExitGamePlay();
                 break;
             }
             case 3:
             {
-                DrawTextureEx(backGroundVictor, (Vector2){0, 0}, 0, 0.49f, WHITE); // Desenhando a textura da imagem
+                DrawTextureEx(backGroundVictory, (Vector2){0, 0}, 0, 0.49f, WHITE); // Desenhando a textura da imagem
                 victoryDesing();
-               // tocarMusica(musica); // função reproduz a música
+                tocarMusica(musicVictory); // função reproduz a música
+                opcTela = clickVictory();
                 break;
             }
-            case 5:
+            case 4:
             {
-                 return NULL; // Saindo do jogo
+                 return 0; // Saindo do jogo
             }
         }
         
@@ -83,9 +83,10 @@ int main(){
   
     UnloadMusicStream(musicHome);  // descarregar fluxo de música
     UnloadMusicStream(musicGameP);
+    UnloadMusicStream(musicVictory);
     
     UnloadTexture(homeBackGround);  // Unload background texture
-    UnloadTexture(backGroundRecords);  
+    UnloadTexture(backGroundVictory);  
     UnloadTexture(backGroundGame);  
      
     CloseAudioDevice();

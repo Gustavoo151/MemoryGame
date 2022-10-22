@@ -26,6 +26,10 @@ Rectangle button14 = {272, 480, 140, 85};
 Rectangle button15 = {430, 480, 140, 85};
 Rectangle button16 = {585, 480, 140, 85};
 
+// // Retangulos para reconhecer área de clique da screen Victory
+Rectangle buttonHomeVictory = {380,420,100,50};
+Rectangle buttonExitVictory = {380,480,100,50};
+
 Vector2 mousePosition = {0.0f, 0.0f};  // Criando vetor para pegar a posição do mouse
 
 Rectangle buttonExitGamePlay = {780, 360, 85, 35}; // Area de click exitGamePlay
@@ -128,20 +132,35 @@ int clickGamePlay(){  // Função a posição do botão clicado
         screenRedirect = gamePlay(15);
         return screenRedirect;
     }
-    return 2;
-}
-
-
-int clickExitGamePlay(){ // Função que leva do gamePlay para tela inicial
-    if(CheckCollisionPointRec(mousePosition, buttonExitGamePlay))
-    { 
-        DrawText("EXIT", 780, 360, 35, MAGENTA);
-        
+    if(CheckCollisionPointRec(mousePosition, buttonExitGamePlay)){ 
+        DrawText("HOME", 780, 360, 35, MAGENTA);
         if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
             return 1;
     }
     return 2;
 }
+
+int clickVictory(){
+    mousePosition = GetMousePosition();
+    
+    if(CheckCollisionPointRec(mousePosition, buttonHomeVictory)){
+        DrawText("HOME", 380, 420, 50, LIGHTGRAY);
+        
+        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+            return 1;
+        }
+    }
+    else if(CheckCollisionPointRec(mousePosition, buttonExitVictory)){
+            DrawText("EXIT", 380, 480, 50, LIGHTGRAY);
+        
+        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+            return 4;
+        }
+    }
+ 
+    return 3;
+}
+
 
 #ifndef HEARDESVICTORY_H_INCLUDED
 #define HEARDESVICTORY_H_INCLUDED
@@ -149,6 +168,6 @@ int clickExitGamePlay(){ // Função que leva do gamePlay para tela inicial
 int clickMouseMainScreen();
 int clickMouseRecordsScreen();
 int clickGamePlay();
-int clickExitGamePlay();
+int clickVictory();
 
 #endif // HEARDESFUNCS_H_INCLUDED
