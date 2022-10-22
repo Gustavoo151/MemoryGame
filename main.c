@@ -10,24 +10,21 @@
 #include "funcoes/gamePlayScreen.h" // Biblioteca que contém o desing da tela de gamePlay
 #include "funcoes/urlOpen.h" // Biblioteca que abre um URL
 #include "funcoes/iconWindow.h" // Biblioteca que adicona o icone na janela
-#include "funcoes/gamePlayMecanics.h"
+#include "funcoes/gamePlayMecanics.h" // Biblioteca com toda a parte de gamePlay do jogo
 
 
 int main(){
    const int screenWidth = 900;  // Largura de tela 
    const int screenHeight = 620; // Altura da tela
    
-   InitWindow(screenWidth, screenHeight, "Jogo da menoria");  // Inicializa a tela
+    InitWindow(screenWidth, screenHeight, "Jogo da menoria");  // Inicializa a tela
     
-   SetTargetFPS(60);  // Define a quantidade de FPS do jogo
+    SetTargetFPS(60);  // Define a quantidade de FPS do jogo
   
-   InitAudioDevice(); 
-
-   char nameMusicHome[40] = "media/Music/MusicHome.mp3";
-   char nameMusicGamePlay[40] = "media/Music/MusicGamePlay.mp3";
+    InitAudioDevice(); 
    
-    Music musicHome = LoadMusicStream(nameMusicHome); // Arquivo tipoMusic para tocarMusica
-    Music musicGameP = LoadMusicStream(nameMusicGamePlay);
+    Music musicHome = LoadMusicStream("media/Music/MusicHome.mp3"); // Arquivo tipoMusic para tocarMusica
+    Music musicGameP = LoadMusicStream("media/Music/MusicGamePlay.mp3");
 
     Texture2D homeBackGround = LoadTexture("media/imagens/FundoMain.png"); // BackGroundHome
     Texture2D backGroundRecords = LoadTexture("media/imagens/BackGroundRecords.png"); // BackGroundRecords
@@ -51,6 +48,7 @@ int main(){
             case 1:
             {
                 DrawTextureEx(homeBackGround, (Vector2){0, 0}, 0, 0.70f, WHITE); // Desenhando o fundo da tela main
+                resetAndStartsGameMecanics();
                 menuDesing();
                 opcTela = clickMouseMainScreen(); // Função que mostra
                 tocarMusica(musicHome); // função reproduz a música
@@ -62,6 +60,10 @@ int main(){
                 gamePlayDesing();
                 
                 opcTela = clickGamePlay();
+               
+                showCards();
+                
+                checkCards();
                 tocarMusica(musicGameP); // função reproduz a música
                 //opcTela = clickExitGamePlay();
                 break;

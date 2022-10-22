@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "raylib.h"
+#include "time.h"
+
 
 // rectangle click area (int x, int y, int width, int height)
 Rectangle botaoRetanguloStart = {350, 275, 160, 50};
@@ -64,86 +66,119 @@ Rectangle button16 = {585, 480, 140, 85};
 int clickGamePlay(){  // Função a posição do botão clicado 
     
     mousePosition = GetMousePosition();  
+    int screenRedirect;
     
     if(CheckCollisionPointRec(mousePosition, button1) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){  // Checando se mouse está em cima do botão
-        DrawText("1", 155, 200, 40, BLACK);
-        return gamePlay(0);
-       // return 1; // Retorna numero do botão clicado
+        //DrawText("1", 155, 200, 40, BLACK);
+        screenRedirect = gamePlay(0);
+     //   checkCards();
+        return screenRedirect;
     } 
     
     else if(CheckCollisionPointRec(mousePosition, button2) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        DrawText("2", 300, 200, 40, BLACK);
-        return gamePlay(1);
+       // DrawText("2", 300, 200, 40, BLACK);
+        screenRedirect = gamePlay(1);
+      //  checkCards();
+        return screenRedirect;
     } 
     
     else if(CheckCollisionPointRec(mousePosition, button3) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        DrawText("3", 450, 200, 40, BLACK);
-        return gamePlay(2);
+        //DrawText("3", 450, 200, 40, BLACK);
+        screenRedirect = gamePlay(2);
+     //   checkCards();
+        return screenRedirect;
     } 
     
     else if(CheckCollisionPointRec(mousePosition, button4) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        DrawText("4", 600, 200, 40, BLACK);
-        return gamePlay(3);
+       // DrawText("4", 600, 200, 40, BLACK);
+        screenRedirect = gamePlay(3);
+     //   checkCards();
+        return screenRedirect;
     } 
     
     if(CheckCollisionPointRec(mousePosition, button5) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        DrawText("5", 155, 300, 40, BLACK); 
-        return gamePlay(4);
+        //DrawText("5", 155, 300, 40, BLACK); 
+        screenRedirect = gamePlay(4);
+     //   checkCards();
+        return screenRedirect;
     }         
     
     else if(CheckCollisionPointRec(mousePosition, button6) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        DrawText("6", 300, 300, 40, BLACK); 
-        return gamePlay(5);
+        //DrawText("6", 300, 300, 40, BLACK); 
+        screenRedirect = gamePlay(5);
+     //   checkCards();
+        return screenRedirect;
     }     
     
     else if(CheckCollisionPointRec(mousePosition, button7) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        DrawText("7", 450, 300, 40, BLACK);
-        return gamePlay(6);
+        //DrawText("7", 450, 300, 40, BLACK);
+        screenRedirect = gamePlay(6);
+     //   checkCards();
+        return screenRedirect;
     } 
     
     else if(CheckCollisionPointRec(mousePosition, button8) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        DrawText("8", 600, 300, 40, BLACK);
-        return gamePlay(7);
+      //  DrawText("8", 600, 300, 40, BLACK);
+        screenRedirect = gamePlay(7);
+     //   checkCards();
+        return screenRedirect;
     } 
     
     else if(CheckCollisionPointRec(mousePosition, button9) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        DrawText("9", 155, 400, 40, BLACK);
-        return gamePlay(8);
+       // DrawText("9", 155, 400, 40, BLACK);
+        screenRedirect = gamePlay(8);
+     //   checkCards();
+        return screenRedirect;
     }  
     
     else if(CheckCollisionPointRec(mousePosition, button10) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        DrawText("10", 300, 400, 40, BLACK);
-        return gamePlay(9);
+        //DrawText("10", 300, 400, 40, BLACK);
+        screenRedirect = gamePlay(9);
+     //   checkCards();
+        return screenRedirect;
     } 
     
     else if(CheckCollisionPointRec(mousePosition, button11) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        DrawText("11", 450, 400, 40, BLACK);
-        return gamePlay(10);
+        //DrawText("11", 450, 400, 40, BLACK);
+        
+        screenRedirect = gamePlay(10);
+     //   checkCards();
+        return screenRedirect;
     } 
     
     else if(CheckCollisionPointRec(mousePosition, button12) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        DrawText("12", 600, 400, 40, BLACK);
-        return gamePlay(11);
+        //DrawText("12", 600, 400, 40, BLACK);
+        screenRedirect = gamePlay(11);
+     //   checkCards();
+        return screenRedirect;
     } 
     
     else if(CheckCollisionPointRec(mousePosition, button13) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        DrawText("13", 155, 500, 40, BLACK);
-        return gamePlay(12);
+        //DrawText("13", 155, 500, 40, BLACK);
+        screenRedirect = gamePlay(12);
+    //    checkCards();
+        return screenRedirect;
     } 
         
     else if(CheckCollisionPointRec(mousePosition, button14) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        DrawText("14", 300, 500, 40, BLACK);
-        return gamePlay(13);
+       // DrawText("14", 300, 500, 40, BLACK);
+        screenRedirect = gamePlay(13);
+     //   checkCards();
+        return screenRedirect;
     } 
     
     else if(CheckCollisionPointRec(mousePosition, button15) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-        DrawText("15", 450, 500, 40, BLACK);
-        return gamePlay(14);
+        //DrawText("15", 450, 500, 40, BLACK);
+        screenRedirect = gamePlay(14);
+     //   checkCards();
+        return screenRedirect;
     } 
     
     else if(CheckCollisionPointRec(mousePosition, button16) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-        DrawText("16", 600, 500, 40, BLACK);
-        return gamePlay(15);
+       // DrawText("16", 600, 500, 40, BLACK);
+        screenRedirect = gamePlay(15);
+     //   checkCards();
+        return screenRedirect;
     }
     return 2;
 }
