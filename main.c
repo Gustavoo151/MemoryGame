@@ -57,12 +57,9 @@ int main(){
             case 2:
             {
                 DrawTextureEx(backGroundGame, (Vector2){0, 0}, 0, 0.345f, WHITE); // Desenhando a textura da imagem                          
-                gamePlayDesing();
-                
+                gamePlayDesing();                
                 opcTela = clickGamePlay();
-               
-                showCards();
-                
+                showCards();                
                 checkCards();
                 tocarMusica(musicGameP); // função reproduz a música
                 //opcTela = clickExitGamePlay();

@@ -140,7 +140,7 @@ void showCards(){
     
     if(map2[11] == 1){
         char numCard[1];
-        itoa(map1[10], numCard,10);
+        itoa(map1[11], numCard,10);
         DrawText(numCard, 600, 400, 40, BLACK);
     }
     
