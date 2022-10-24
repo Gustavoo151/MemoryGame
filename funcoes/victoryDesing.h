@@ -3,6 +3,8 @@
 
 
 void victoryDesing(){  // Função que mostra o texto da tela de vitoria
+
+    SetWindowTitle("Victory"); 
     ClearBackground(MARROMDARK);
     DrawText("VICTORY", 230, 180, 100, VIOLET);
     DrawText("HOME", 380, 420, 50, WHITE);

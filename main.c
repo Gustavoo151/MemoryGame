@@ -4,13 +4,10 @@
 
 #include "funcoes/musicPlayer.h"  // Reproduz arquivos de som
 #include "funcoes/victoryDesing.h" // Desing e a mecanica da janela Victory
-#include "funcoes/mainScreen.h" // Desing e a mecanica da janela principal
+#include "funcoes/homeScreenDesign.h" // Desing e a mecanica da janela principal
 #include "funcoes/clickMouse.h" // Pegar o click do mouse
-#include "funcoes/nameWindow.h" // Coloca um nome na janela
-#include "funcoes/gamePlayScreen.h" // Biblioteca que contém o desing da tela de gamePlay
-#include "funcoes/urlOpen.h" // Biblioteca que abre um URL
-#include "funcoes/iconWindow.h" // Biblioteca que adicona o icone na janela
 #include "funcoes/gamePlayMecanics.h" // Biblioteca com toda a parte de gamePlay do jogo
+#include "funcoes/gamePlayScreenDesign.h" // Biblioteca que contém o desing da tela de gamePlay
 
 
 int main(){
@@ -32,25 +29,27 @@ int main(){
     Texture2D backGroundVictory = LoadTexture("media/imagens/BackGroundVictory.png"); // BackGroundVirctory
                 
     Image IconImage = LoadImage("media/imagens/iconBrain.png");
+    SetWindowIcon(IconImage);
+    
+    Font fonteMain = LoadFont("fonts/Symtext.ttf"); // Carragando fonte da função main
+
     
     int opcTela = 1;  // Variavel para Trocar de tela
     
    while(!WindowShouldClose())  // Deixa tela aberta até os esc ser pressionado
    {
-        BeginDrawing();  // Tela de configuração (framebuffer) para começar a desenhar
-        
-        icon(IconImage); // Colocando icone da janela
-        
+        BeginDrawing();  // Tela de configuração (framebuffer) para começar a desenhar           
         
         switch (opcTela)
         {
             case 1:
             {
+                
                 DrawTextureEx(homeBackGround, (Vector2){0, 0}, 0, 0.70f, WHITE); // Desenhando o fundo da tela main
                 resetAndStartsGameMecanics();
-                menuDesing();
+                menuDesign(fonteMain);
                 opcTela = clickMouseMainScreen(); // Função que mostra
-                tocarMusica(musicHome); // função reproduz a música
+                playMusic(musicHome); // função reproduz a música
                 break;   
             }
             case 2:
@@ -58,17 +57,16 @@ int main(){
                 DrawTextureEx(backGroundGame, (Vector2){0, 0}, 0, 0.345f, WHITE); // Desenhando a textura da imagem                          
                 gamePlayDesing();                
                 opcTela = clickGamePlay();
-                showCards();                
+                showCards();  
                 checkCards();
-                tocarMusica(musicGameP); // função reproduz a música
-               // opcTela = clickExitGamePlay();
+                playMusic(musicGameP); // função reproduz a música
                 break;
             }
             case 3:
             {
                 DrawTextureEx(backGroundVictory, (Vector2){0, 0}, 0, 0.49f, WHITE); // Desenhando a textura da imagem
                 victoryDesing();
-                tocarMusica(musicVictory); // função reproduz a música
+                playMusic(musicVictory); // função reproduz a música
                 opcTela = clickVictory();
                 break;
             }

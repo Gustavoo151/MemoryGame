@@ -34,6 +34,7 @@ Vector2 mousePosition = {0.0f, 0.0f};  // Criando vetor para pegar a posição d
 
 Rectangle buttonExitGamePlay = {780, 360, 85, 35}; // Area de click exitGamePlay
 
+
 int clickMouseMainScreen(){
     
     mousePosition = GetMousePosition(); // Passando a posição do mouse para vetor   
@@ -50,88 +51,70 @@ int clickMouseMainScreen(){
         DrawText("EXIT", 360, 330, 40, MAGENTA);
         
         if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-            return 5;     
+            return 4;     
     }  
     if(CheckCollisionPointRec(mousePosition, linkGitgub))
     {     
         DrawText("Github repository", 680, 570, 20, MAGENTA);
         
         if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-            urlOpen(); // Abrindo link do gitHub
+            OpenURL("https://github.com/Gustavoo151/MemoryGame"); // Abrindo link do gitHub
     }
     return 1; 
 }
 
 
-int clickGamePlay(){  // Função a posição do botão clicado 
-    
+int clickGamePlay(){  // Função a posição do botão clicado    
     mousePosition = GetMousePosition();  
-    int screenRedirect;
     
-    if(CheckCollisionPointRec(mousePosition, button1) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){  // Checando click do mouse
-        screenRedirect = gamePlay(0);
-        return screenRedirect;
-    } 
-    else if(CheckCollisionPointRec(mousePosition, button2) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        screenRedirect = gamePlay(1);
-        return screenRedirect;
-    }     
-    else if(CheckCollisionPointRec(mousePosition, button3) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        screenRedirect = gamePlay(2);
-        return screenRedirect;
-    }     
-    else if(CheckCollisionPointRec(mousePosition, button4) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        screenRedirect = gamePlay(3);
-        return screenRedirect;
-    }     
-    else if(CheckCollisionPointRec(mousePosition, button5) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){  
-        screenRedirect = gamePlay(4);
-        return screenRedirect;
-    }            
-    else if(CheckCollisionPointRec(mousePosition, button6) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        screenRedirect = gamePlay(5);
-        return screenRedirect;
-    }         
-    else if(CheckCollisionPointRec(mousePosition, button7) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        screenRedirect = gamePlay(6);
-        return screenRedirect;
-    }     
-    else if(CheckCollisionPointRec(mousePosition, button8) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        screenRedirect = gamePlay(7);
-        return screenRedirect;
-    }     
-    else if(CheckCollisionPointRec(mousePosition, button9) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        screenRedirect = gamePlay(8);
-        return screenRedirect;
-    }     
-    else if(CheckCollisionPointRec(mousePosition, button10) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        screenRedirect = gamePlay(9);
-        return screenRedirect;
-    }     
-    else if(CheckCollisionPointRec(mousePosition, button11) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        screenRedirect = gamePlay(10);
-        return screenRedirect;
-    }     
-    else if(CheckCollisionPointRec(mousePosition, button12) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        screenRedirect = gamePlay(11);
-        return screenRedirect;
-    }    
-    else if(CheckCollisionPointRec(mousePosition, button13) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        screenRedirect = gamePlay(12);
-        return screenRedirect;
-    }         
-    else if(CheckCollisionPointRec(mousePosition, button14) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){ 
-        screenRedirect = gamePlay(13);
-        return screenRedirect;
-    }     
-    else if(CheckCollisionPointRec(mousePosition, button15) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-        screenRedirect = gamePlay(14);
-        return screenRedirect;
-    }     
-    else if(CheckCollisionPointRec(mousePosition, button16) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-        screenRedirect = gamePlay(15);
-        return screenRedirect;
-    }
+    if(CheckCollisionPointRec(mousePosition, button1) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))  // Checando click do mouse
+        return gamePlay(0);
+     
+    else if(CheckCollisionPointRec(mousePosition, button2) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        return gamePlay(1);
+         
+    else if(CheckCollisionPointRec(mousePosition, button3) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
+        return gamePlay(2);
+         
+    else if(CheckCollisionPointRec(mousePosition, button4) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        return gamePlay(3);
+         
+    else if(CheckCollisionPointRec(mousePosition, button5) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
+        return gamePlay(4);
+                
+    else if(CheckCollisionPointRec(mousePosition, button6) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
+        return gamePlay(5);
+             
+    else if(CheckCollisionPointRec(mousePosition, button7) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
+        return gamePlay(6);
+         
+    else if(CheckCollisionPointRec(mousePosition, button8) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        return gamePlay(7);
+         
+    else if(CheckCollisionPointRec(mousePosition, button9) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        return gamePlay(8);
+         
+    else if(CheckCollisionPointRec(mousePosition, button10) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
+        return gamePlay(9);
+         
+    else if(CheckCollisionPointRec(mousePosition, button11) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        return gamePlay(10);
+        
+    else if(CheckCollisionPointRec(mousePosition, button12) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
+        return gamePlay(11);
+        
+    else if(CheckCollisionPointRec(mousePosition, button13) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        return gamePlay(12);
+             
+    else if(CheckCollisionPointRec(mousePosition, button14) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        return gamePlay(13);
+         
+    else if(CheckCollisionPointRec(mousePosition, button15) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        return gamePlay(14);
+         
+    else if(CheckCollisionPointRec(mousePosition, button16) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        return gamePlay(15);
+   
     if(CheckCollisionPointRec(mousePosition, buttonExitGamePlay)){ 
         DrawText("HOME", 780, 360, 35, MAGENTA);
         if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
@@ -146,21 +129,23 @@ int clickVictory(){
     if(CheckCollisionPointRec(mousePosition, buttonHomeVictory)){
         DrawText("HOME", 380, 420, 50, LIGHTGRAY);
         
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
             return 1;
-        }
     }
     else if(CheckCollisionPointRec(mousePosition, buttonExitVictory)){
-            DrawText("EXIT", 380, 480, 50, LIGHTGRAY);
+        DrawText("EXIT", 380, 480, 50, LIGHTGRAY);
         
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
             return 4;
-        }
     }
- 
     return 3;
 }
 
+/*
+void saveGameClick(){
+    
+}
+*/
 
 #ifndef HEARDESVICTORY_H_INCLUDED
 #define HEARDESVICTORY_H_INCLUDED

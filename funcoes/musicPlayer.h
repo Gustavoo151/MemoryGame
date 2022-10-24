@@ -3,8 +3,7 @@
 
 // Biblioteca de reprodução de Musicas/Sons
 
-
-void tocarMusica(Music music){
+void playMusic(Music music){
     UpdateMusicStream(music);
     PlayMusicStream(music);
 }
@@ -12,6 +11,6 @@ void tocarMusica(Music music){
 #ifndef HEARDESMUSIC_H_INCLUDED
 #define HEARDESMUSIC_H_INCLUDED
 
-void tocarMusica(Music music);
+void playMusic(Music music);
 
 #endif // HEARDESFUNCS_H_INCLUDED
