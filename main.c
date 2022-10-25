@@ -7,8 +7,9 @@
 #include "funcoes/homeScreenDesign.h" // Desing e a mecanica da janela principal
 #include "funcoes/clickMouse.h" // Pegar o click do mouse
 #include "funcoes/gamePlayMecanics.h" // Biblioteca com toda a parte de gamePlay do jogo
-#include "funcoes/gamePlayScreenDesign.h" // Biblioteca que contém o desing da tela de gamePlay
-
+#include "funcoes/gamePlayScreenDesign.h" // Biblioteca que contem o desing da tela de gamePlay
+#include "funcoes/saveGame.h"  // Biblica que contem toda parte do save do game
+#include "funcoes/sleepCards.h"
 
 int main(){
    const int screenWidth = 900;  // Largura de tela 
@@ -32,9 +33,9 @@ int main(){
     SetWindowIcon(IconImage);
     
     Font fonteMain = LoadFont("fonts/Symtext.ttf"); // Carragando fonte da função main
-
     
     int opcTela = 1;  // Variavel para Trocar de tela
+    int continueGame = stateContinue(); // Estado do do continue  
     
    while(!WindowShouldClose())  // Deixa tela aberta até os esc ser pressionado
    {
@@ -43,23 +44,26 @@ int main(){
         switch (opcTela)
         {
             case 1:
-            {
+            {                    
+                if (continueGame == 2)  // Verificado, zerado os dados e criando match aleatorios no mapa
+                    resetAndStartsGameMecanics();
+                else if (continueGame == 1) // Verificando de fazendo load do continue
+                    loadSave(); 
                 
                 DrawTextureEx(homeBackGround, (Vector2){0, 0}, 0, 0.70f, WHITE); // Desenhando o fundo da tela main
-                resetAndStartsGameMecanics();
                 menuDesign(fonteMain);
-                opcTela = clickMouseMainScreen(); // Função que mostra
+                opcTela = clickMouseHomeScreen(); // Função que mostra
                 playMusic(musicHome); // função reproduz a música
                 break;   
             }
             case 2:
-            {
+            {                  
                 DrawTextureEx(backGroundGame, (Vector2){0, 0}, 0, 0.345f, WHITE); // Desenhando a textura da imagem                          
-                gamePlayDesing();                
-                opcTela = clickGamePlay();
-                showCards();  
-                checkCards();
+                gamePlayDesing(); 
+                opcTela = clickGamePlay();              
                 playMusic(musicGameP); // função reproduz a música
+                if (exitSave() == 1)
+                    return 0;
                 break;
             }
             case 3:

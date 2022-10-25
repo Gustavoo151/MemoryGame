@@ -8,23 +8,6 @@ Rectangle botaoRetanguloExit = {355, 330, 115, 30};
 Rectangle linkGitgub = {680,570, 180, 20}; 
 Rectangle backRecords = {360,410, 100, 40};
 
-// Retangulos para reconhecer área de clique da screen gamePlay
-Rectangle button1 = {115, 180, 140, 85};
-Rectangle button2 = {272, 180, 140, 85};
-Rectangle button3 = {430, 180, 140, 85};
-Rectangle button4 = {585, 180, 140, 85};
-Rectangle button5 = {115, 280, 140, 85};
-Rectangle button6 = {272, 280, 140, 85};
-Rectangle button7 = {430, 280, 140, 85};
-Rectangle button8 = {585, 280, 140, 85};
-Rectangle button9 = {115, 380, 140, 85};   
-Rectangle button10 = {272, 380, 140, 85}; 
-Rectangle button11 = {430, 380, 140, 85};
-Rectangle button12 = {585, 380, 140, 85};
-Rectangle button13 = {115, 480, 140, 85};
-Rectangle button14 = {272, 480, 140, 85};
-Rectangle button15 = {430, 480, 140, 85};
-Rectangle button16 = {585, 480, 140, 85};
 
 // // Retangulos para reconhecer área de clique da screen Victory
 Rectangle buttonHomeVictory = {380,420,100,50};
@@ -33,15 +16,17 @@ Rectangle buttonExitVictory = {380,480,100,50};
 Vector2 mousePosition = {0.0f, 0.0f};  // Criando vetor para pegar a posição do mouse
 
 Rectangle buttonExitGamePlay = {780, 360, 85, 35}; // Area de click exitGamePlay
+Rectangle buttonSaveGamePlay = {780, 410, 85, 60};
 
 
-int clickMouseMainScreen(){
+// Retun: Retona o valor da tela que sera aberta apos o click
+int clickMouseHomeScreen(){  // Função que faz toda parte defuncionalidade te tela HomeScreen
     
     mousePosition = GetMousePosition(); // Passando a posição do mouse para vetor   
     
     if(CheckCollisionPointRec(mousePosition, botaoRetanguloStart)) // Checando se mouse está em cima do botão
     { 
-        DrawText("START", 360, 280, 40, MAGENTA); // Mudando cor do botão quando mouse está em cima
+        DrawText("START", 360, 280, 40, MAGENTA); // Mudando a cor do botão quando mouse está em cima
         
         if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))  // Se o botão for clicado retorna o numero da janela a ser aberta
             return 2;
@@ -64,66 +49,62 @@ int clickMouseMainScreen(){
 }
 
 
-int clickGamePlay(){  // Função a posição do botão clicado    
-    mousePosition = GetMousePosition();  
-    
-    if(CheckCollisionPointRec(mousePosition, button1) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))  // Checando click do mouse
-        return gamePlay(0);
-     
-    else if(CheckCollisionPointRec(mousePosition, button2) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-        return gamePlay(1);
-         
-    else if(CheckCollisionPointRec(mousePosition, button3) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
-        return gamePlay(2);
-         
-    else if(CheckCollisionPointRec(mousePosition, button4) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-        return gamePlay(3);
-         
-    else if(CheckCollisionPointRec(mousePosition, button5) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
-        return gamePlay(4);
+//Return: Retorna a posicao do numero clicado
+int clickGamePlay(){ // Função que faz a mecanica de click no screen gamePlay
+   mousePosition = GetMousePosition();
+    for(int i =0; i < 16; i++){
+        
+            if (i < 4){
+                Rectangle button = {((i*150) + 115), 180, 140, 85};
+               
+                if(CheckCollisionPointRec(mousePosition, button) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+                        return gamePlay(i);      
+            }      
+            else if ((i < 8) && (i > 3)){
+                Rectangle button = {((i-4)*150 + 115), 280, 140, 85};
                 
-    else if(CheckCollisionPointRec(mousePosition, button6) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
-        return gamePlay(5);
-             
-    else if(CheckCollisionPointRec(mousePosition, button7) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
-        return gamePlay(6);
-         
-    else if(CheckCollisionPointRec(mousePosition, button8) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-        return gamePlay(7);
-         
-    else if(CheckCollisionPointRec(mousePosition, button9) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-        return gamePlay(8);
-         
-    else if(CheckCollisionPointRec(mousePosition, button10) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
-        return gamePlay(9);
-         
-    else if(CheckCollisionPointRec(mousePosition, button11) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-        return gamePlay(10);
+                if(CheckCollisionPointRec(mousePosition, button) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+                        return gamePlay(i); 
+            }                      
+            else if ((i < 12) && (i > 7)){
+                Rectangle button = {((i-8)*150 + 115), 380, 140, 85};
+                
+                if(CheckCollisionPointRec(mousePosition, button) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+                    return gamePlay(i); 
+            }            
+            else if ((i < 16) && (i > 11)){
+                Rectangle button = {((i-12)*150 + 115), 480, 140, 85};
+                
+                if(CheckCollisionPointRec(mousePosition, button) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+                    return gamePlay(i); 
+            }            
+            if(CheckCollisionPointRec(mousePosition, buttonExitGamePlay)){ 
+                DrawText("HOME", 780, 360, 35, MAGENTA);
+                if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+                    continueGameOpc(2);
+                    return 1;
+                }
+            }             
+    }      
+    return 2;           
+}       
+
+
+// Return: Retorna True se a opcao save for clicada
+int clickSaveGamePlay(){  // Funcao que pega o click do botao save/exit
+    mousePosition = GetMousePosition();
+    if(CheckCollisionPointRec(mousePosition, buttonSaveGamePlay)){
+        DrawText("SAVE", 780, 410, 35, MAGENTA);
+        DrawText("EXIT", 780, 440, 35, MAGENTA);
         
-    else if(CheckCollisionPointRec(mousePosition, button12) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
-        return gamePlay(11);
-        
-    else if(CheckCollisionPointRec(mousePosition, button13) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-        return gamePlay(12);
-             
-    else if(CheckCollisionPointRec(mousePosition, button14) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-        return gamePlay(13);
-         
-    else if(CheckCollisionPointRec(mousePosition, button15) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-        return gamePlay(14);
-         
-    else if(CheckCollisionPointRec(mousePosition, button16) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-        return gamePlay(15);
-   
-    if(CheckCollisionPointRec(mousePosition, buttonExitGamePlay)){ 
-        DrawText("HOME", 780, 360, 35, MAGENTA);
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
             return 1;
     }
-    return 2;
 }
 
-int clickVictory(){
+
+// Retun: Retona o valor da tela que sera aberta apos o click
+int clickVictory(){ // Função que faz toda parte defuncionalidade da tela Victory
     mousePosition = GetMousePosition();
     
     if(CheckCollisionPointRec(mousePosition, buttonHomeVictory)){
@@ -141,15 +122,11 @@ int clickVictory(){
     return 3;
 }
 
-/*
-void saveGameClick(){
-    
-}
-*/
 
-#ifndef HEARDESVICTORY_H_INCLUDED
-#define HEARDESVICTORY_H_INCLUDED
+#ifndef HEARDESCLICKMOUSE_H_INCLUDED
+#define HEARDESCLICKMOUSE_H_INCLUDED
 
+int clickSaveGamePlay();
 int clickMouseMainScreen();
 int clickMouseRecordsScreen();
 int clickGamePlay();

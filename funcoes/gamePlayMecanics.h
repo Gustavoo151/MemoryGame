@@ -23,6 +23,21 @@ void shuffleVector(){  // Funcao que embaralha vetor
 }
 
 
+void loadSave(){  // Funcao que carrega os dados salvos para o jogo 
+    FILE *cardsSaveArchive;
+    FILE *cardsAuxSave;
+
+    cardsSaveArchive = fopen("saveGameData/saveDadosCards.txt", "r");
+    cardsAuxSave = fopen("saveGameData/saveDadosCardsAux.txt", "r");
+
+    if (cardsSaveArchive != NULL)
+        fscanf(cardsSaveArchive,"%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d", &cards[0], &cards[1], &cards[2], &cards[3], &cards[4], &cards[5], &cards[6], &cards[7], &cards[8], &cards[9], &cards[10], &cards[11], &cards[12], &cards[13], &cards[14], &cards[15]);   
+
+    if (cardsAuxSave != NULL)
+        fscanf(cardsAuxSave,"%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d", &cardsAux[0], &cardsAux[1], &cardsAux[2], &cardsAux[3], &cardsAux[4], &cardsAux[5], &cardsAux[6], &cardsAux[7], &cardsAux[8], &cardsAux[9], &cardsAux[10], &cardsAux[11], &cardsAux[12], &cardsAux[13], &cardsAux[14], &cardsAux[15]);   
+}
+
+
 void resetCards(){  // função que zera (vira para baixo todas as cartas) os valores do cardsAux
     for(int i =0; i < 16; i++)
         cardsAux[i] = 0;
@@ -32,10 +47,12 @@ void resetCards(){  // função que zera (vira para baixo todas as cartas) os va
 void resetAndStartsGameMecanics(){  // Função que reseta o jogar
     shuffleVector();
     resetCards();
+    saveGameProgress(cards, cardsAux);  // Chamando funcao que salva o progresso do jogo
 }
 
 
 int verifica(){  // Função que verifica os pares e rotorna o valor para indicar o fim do jogo
+    saveGameProgress(cards, cardsAux);  // Chamando funcao que salva o progresso do jogo
     int combinations = 0;
     for (int i = 0; i <16; i++){
         if (cardsAux[i] == 1)
@@ -76,16 +93,16 @@ void showCards(){   // Funcao que mostra as cartas clicada na tela
                 itoa(cards[i], numCard,10);  // Transformar um int em char
                 
                 if (i < 4)
-                    DrawText(numCard,(i*150) + 150, 200, 40, BLACK);
+                    DrawText(numCard,(i*150) + 175, 200, 50, BLACK);
 
                 else if ((i < 8) && (i > 3))           
-                    DrawText(numCard, ((i-4)*150) + 150, 300, 40, BLACK);  
+                    DrawText(numCard, ((i-4)*150) + 175, 300, 50, BLACK);  
                
                 else if ((i < 12) && (i > 7))
-                    DrawText(numCard, ((i-8)*150) + 150, 400, 40, BLACK);  
+                    DrawText(numCard, ((i-8)*150) + 175, 400, 50, BLACK);  
      
                 else if ((i < 16) && (i > 11))
-                    DrawText(numCard, (i-12) * 150 + 150, 500, 40, BLACK);  
+                    DrawText(numCard, (i-12) * 150 + 175, 500, 50, BLACK);  
         }
     }       
 }
@@ -99,10 +116,11 @@ void checkCards(){  // Função que verifica se os pares deram mach
             cardsAux[positionTwo] = coberto;
             contJogadas = contJogadas - 2;
         }
-        else{
+        else{            
             verificaPares = verificaPares + 2;
         }
-    }    
+        
+    } 
 }
 
 #ifndef HEARDESGAMEPLAYMECANICS_H_INCLUDED
@@ -110,6 +128,7 @@ void checkCards(){  // Função que verifica se os pares deram mach
  
 int verifica();
 void showCards();
+void loadSave();
 int gamePlay(int bottonClick);
 void shuffleVector();
 void resetAndStartsGameMecanics();
