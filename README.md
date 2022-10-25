@@ -1,6 +1,6 @@
 # Memory Game
 
-Feito por: José Gustavo de olvieira cunha.
+Feito por: José Gustavo de oliveira cunha.
 
 Jogo simple feito com a linguagem de pregramação usando a biblioteca raylib.
 
