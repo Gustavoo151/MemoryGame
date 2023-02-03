@@ -2,10 +2,9 @@
 
 Feito por: José Gustavo de oliveira cunha.
 
-Jogo simple feito com a linguagem de programação C usando a biblioteca raylib.
+Jogo da memória feito com a linguagem de programação C usando a biblioteca raylib.
 
 Esse jogo da memória consiste a achar os 8 pares dos números de 1 a 8.
-
 
 # Home Screen
 ![01](https://user-images.githubusercontent.com/71619573/216525216-7a755e3d-fa7d-4916-b85d-8627085dc3a2.png)
